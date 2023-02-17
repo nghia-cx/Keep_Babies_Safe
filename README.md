@@ -1,6 +1,6 @@
 # Keep_Babies_Safe
 
-Step 1: Open Link_Download_Model and download model.
+Step 1: Open Link_download_model above and download model.
 
 Step 2: Open virtualenv/conda
 
