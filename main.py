@@ -10,7 +10,7 @@ from utils.general import scale_coords
 
 if __name__ == '__main__':
     
-    weights = r'bestshow.pt'
+    weights = r'..\bestshow.pt'
     
     im_size = 640
     conf_thres = 0.5#0.8
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # if os.path.exists('output.avi'):
     #     os.remove('bird_output.avi')
     
-    result = cv2.VideoWriter('runs\detect\output.mp4',fourcc, fps, (width,height))
+    result = cv2.VideoWriter('..\output.mp4',fourcc, fps, (width,height))
 
     # load model
     Det = Detect(weights, im_size, device)
