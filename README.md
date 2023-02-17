@@ -12,8 +12,8 @@ Step 5: Edit path at line 13,22,33 follow the path in your computer
 
 Step 6: Run main.py
     When you enter button:
-    - P: it will pause your video
-    - Q: it will quit your video
-    - D: it will detect object on your video
-    - C: it will not detect object on your video
+     P: it will pause your video,
+     Q: it will quit your video,
+     D: it will detect object on your video,
+     C: it will not detect object on your video
     
