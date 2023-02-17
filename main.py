@@ -19,7 +19,7 @@ if __name__ == '__main__':
     classes = None
 
 
-    cap = cv2.VideoCapture(r'videos\check3.mp4') 
+    cap = cv2.VideoCapture(r'videos\file3.mp4') 
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
