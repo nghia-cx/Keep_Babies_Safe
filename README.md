@@ -20,13 +20,13 @@ Open send_telegram.py:
     At line 6: replace your_id  
 
 Step 5: Run main.py
-    It has 2 mode: Indoor and Outdoor. Press 1 for Indoor, 2 for Outdoor  
+    It has 2 mode: Indoor and Outdoor. Press 1 for Indoor,press 2 for Outdoor  
     
     In mode 1:
         When the video start, press P to pause video, now you can choose points via 'left click mouse'. After choose, press P again then press D...  
     In mode 2:
         When the video start, press button D ...  
-        
+ 
     For all mode, press button:  
      P: it will pause your video    
      Q: it will quit your video    
