@@ -13,7 +13,7 @@ Step 4: Get API Token Telegram (follow https://www.siteguarding.com/en/how-to-ge
             At line 5: replace your_token  
             At line 6: replace your_id  
 
-Step 7: Run main.py
+Step 5: Run main.py
     It has 2 mode: Indoor and Outdoor
     In mode 1:
         When the video start, you can choose points via 'left click mouse'. After choose, press button D ...  
