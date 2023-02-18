@@ -6,7 +6,7 @@ import numpy as np
 from Class_yolov5 import Detect
 from utils.general import scale_coords
 
-
+ROOT = os.getcwd()
 
 if __name__ == '__main__':
     
@@ -15,7 +15,7 @@ if __name__ == '__main__':
     print("2. Indoor")
     mode = input()
 
-    weights = r'C:\Users\DELL\Documents\Python\yolov5\runs\train\dan_items\best_final.pt'
+    weights = ROOT + r'\runs\train\dan_items\best_final.pt'
     
     im_size = 640
     conf_thres = 0.5#0.8
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # If mode is Outdoor
     if mode == '1':
-        cap = cv2.VideoCapture(r'C:\Users\DELL\Documents\Python\yolov5\check3.mp4') 
+        cap = cv2.VideoCapture(ROOT + r'\videos\check3.mp4') 
         fps = int(cap.get(cv2.CAP_PROP_FPS))
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -34,7 +34,7 @@ if __name__ == '__main__':
         
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-        result = cv2.VideoWriter('runs/detect/output1.mp4',fourcc, fps, (width,height))
+        result = cv2.VideoWriter(ROOT +r'\runs\detect\output1.mp4',fourcc, fps, (width,height))
 
         # load model
         Det = Detect(weights, im_size, device)
@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
     # if mode is Indoor
     else:
-        cap = cv2.VideoCapture(r'C:\Users\DELL\Documents\Python\yolov5\file3.mp4') 
+        cap = cv2.VideoCapture(ROOT + r'\videos\file3.mp4') 
         fps = int(cap.get(cv2.CAP_PROP_FPS))
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -140,7 +140,7 @@ if __name__ == '__main__':
         
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-        result = cv2.VideoWriter('runs/detect/output2.mp4',fourcc, fps, (width,height))
+        result = cv2.VideoWriter(ROOT + r'\runs\detect\output2.mp4',fourcc, fps, (width,height))
 
         # load model
         Det = Detect(weights, im_size, device)
