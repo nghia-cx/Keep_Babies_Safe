@@ -15,7 +15,7 @@ if __name__ == '__main__':
     print("2. Indoor")
     mode = input()
 
-    weights = ROOT + r'\runs\train\dan_items\best_final.pt'
+    weights = ROOT + r'\dan_items\best_final.pt'
     
     im_size = 640
     conf_thres = 0.5#0.8
