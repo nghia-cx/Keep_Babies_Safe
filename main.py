@@ -34,7 +34,7 @@ if __name__ == '__main__':
         
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-        result = cv2.VideoWriter(ROOT +r'\runs\detect\output1.mp4',fourcc, fps, (width,height))
+        result = cv2.VideoWriter(ROOT +r'\output_vid\output1.mp4',fourcc, fps, (width,height))
 
         # load model
         Det = Detect(weights, im_size, device)
@@ -140,7 +140,7 @@ if __name__ == '__main__':
         
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
-        result = cv2.VideoWriter(ROOT + r'\runs\detect\output2.mp4',fourcc, fps, (width,height))
+        result = cv2.VideoWriter(ROOT + r'\output_vid\output2.mp4',fourcc, fps, (width,height))
 
         # load model
         Det = Detect(weights, im_size, device)
