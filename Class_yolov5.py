@@ -9,9 +9,8 @@ import cv2
 import torch
 from models.common import DetectMultiBackend
 import datetime
-from send_telegram import send_warning
 import threading
-import itertools
+from send_telegram import send_warning
 from shapely.geometry.polygon import Polygon
 from shapely.geometry import Point
 
@@ -28,23 +27,13 @@ class Detect:
         self.dst = None
         self.alert_telegram_each = 30
         self.list = []
-        # # Load model
-        # self.model = DetectMultiBackend(weights, device, inplace=True, fuse=True)  # load FP32 model
-        # self.stride = int(self.model.stride.max())  # model stride
-        # self.img_size = check_img_size(img_size, s=self.stride)  # check img_size
 
+        # # Load model
         self.model = DetectMultiBackend(weights, device=device, dnn=dnn, fp16=half)
         self.stride, self.names, self.pt = self.model.stride, self.model.names, self.model.pt
         self.imgsz = check_img_size(imgsz, s=self.stride)  # check image size
         self.colors = [[random.randint(0, 255) for _ in range(3)] for _ in self.names]
 
-        # if self.half:
-        #     self.model.half()  # to FP16
-        # if self.device.type != 'cpu':
-        #     self.model(torch.zeros(1, 3, self.img_size, self.img_size).to(
-        #         self.device).type_as(next(self.model.parameters())))  # run once
-        # self.names = self.model.module.names if hasattr(self.model, 'module') else self.model.names
-        
     # Using Euclid algorithm
     def distance(self,point1, point2):
         '''Calculate usual distance.'''
@@ -82,10 +71,10 @@ class Detect:
                 if dist < distance:
                     colors1[i] = 'red'
                     colors2[j] = 'red'
-                    cv2.putText(frame, "Dangerous!", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-                    # self.alert(frame)
+                    self.alert(frame)
         return frame
     
+    # Draw color for each object
     def color_object(self,frame,list,colors,distance,width,overlay,overlay_flip):
         for i,bird_center in enumerate(list):
             if colors[i] == 'green':
@@ -109,19 +98,17 @@ class Detect:
         return frame
 
     # Detect and handles on bird view
-    def bird_detect_people(self,frame,list1, list2, distance, width, height,
+    def bird_detect_people(self,frame,list1, list2, distance,points, width, height,
                                 region=None, dst=None):
         
-        print('list_peo: ',list1)
-        print('list_obj: ',list2)
         if self.region is None:
             # The rectangle on the original frame
-
-            region = np.float32([[300, 210], [520, 210], [width, height], [0, height]])
+            region = np.float32(points)
 
             # Draw the region on frame
             region1 = np.array(region, dtype=np.int32).reshape((-1, 1, 2))
             frame = cv2.polylines(frame.copy(), [region1], True, (0, 0, 255), 2)
+
         if self.dst is None:
             # The rectangle be trasnformed 
             dst = np.float32([[0, 0], [width, 0], [width, 3*width], [0, 3*width]])
@@ -141,8 +128,7 @@ class Detect:
 
         # Detect dangerous objects zone and warning 
         frame = self.detect_dangerous(frame,bird_centers_peo,bird_centers_obj,distance,colors1,colors2)
-        print('color1: ',colors1)
-        print('color2: ',colors2)
+
         overlay = np.zeros((3*width, 4*width, 3), np.uint8)
         overlay_flip = np.zeros((3*width, 4*width, 3), np.uint8)
 
