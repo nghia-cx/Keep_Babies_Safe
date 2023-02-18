@@ -26,7 +26,6 @@ Step 5: Run main.py
         When the video start, press P to pause video, now you can choose points via 'left click mouse'. After choose, press P again then press D...  
     In mode 2:
         When the video start, press button D ...  
- 
     For all mode, press button:  
      P: it will pause your video    
      Q: it will quit your video    
