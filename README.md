@@ -1,7 +1,7 @@
 # Keep_Babies_Safe
 
 Configuration: Chip i5-1135G7 2,4 GHz, Ram 8GB, Window    
-Using virtualenv (or conda) python >= virtualenv 3.7  
+Using virtualenv (or conda) python >= virtualenv 3.7.1 
 
 Step 1: Open cmd on your computer and git clone https://github.com/nghia-cx/Keep_Babies_Safe.git
 
