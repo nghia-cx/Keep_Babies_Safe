@@ -43,7 +43,7 @@ if __name__ == '__main__':
         st1 = time.time()
 
         points = []
-        ret,frame = cap.read()
+        
         while True:
             with torch.no_grad(): 
                 
