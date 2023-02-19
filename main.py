@@ -13,6 +13,7 @@ if __name__ == '__main__':
     print('Nhap mode: ')
     print("1. Outdoor")
     print("2. Indoor")
+    print("Enter mode: ",end='')
     mode = input()
 
     weights = ROOT + r'\dan_items\best_final.pt'
